@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <title>Fiche d'inscription</title>
-  <link rel="stylesheet" type="text/css" href="assets/css/connexion.css" />
+  <link rel="stylesheet" type="text/css" href="css/connexion.css" />
   <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
