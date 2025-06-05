@@ -19,3 +19,8 @@ switch ($route) {
         echo "404 - Page non trouvée";
         break;
 }
+
+   // 🔽 AJOUT POUR L'AFFICHAGE DES TRAJETS
+        case 'trajets':
+            require('controllers/trajet_controle.php');
+            break;
