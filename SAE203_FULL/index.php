@@ -1,21 +1,21 @@
 <?php
-error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED); 
+error_reporting(E_ALL);
 ini_set('display_errors', 1);
-    //The front root controller
 
-    //The requested route
-    $route = null;
-    if (isset($_GET['route'])) {
-        $route = $_GET['route'];
-    }
-    
-    //We switch to the good controller
-    switch ($route) {
-        case null:
-            require('views/connexion.php');
-            break;
-        case 'connexion':
-            require('views/connexion.php')    
-            break;
+$route = $_GET['route'] ?? null;
 
-    }
+switch ($route) {
+    case null:
+        require('controllers/auth_ctrl.php');
+        login_ctrl();
+        break;
+
+    case 'auth':
+        require('controllers/auth_ctrl.php');
+        auth_ctrl();
+        break;
+
+    default:
+        echo "404 - Page non trouvée";
+        break;
+}
