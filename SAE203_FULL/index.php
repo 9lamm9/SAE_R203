@@ -1,26 +1,37 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+session_start();
 
 $route = $_GET['route'] ?? null;
 
 switch ($route) {
     case null:
+    case 'login':
+        require('views/login_view.php');
+        login_view();
+        break;
+
+    case 'auth': // pour traitement du formulaire login
         require('controllers/auth_ctrl.php');
         login_ctrl();
         break;
 
-    case 'auth':
-        require('controllers/auth_ctrl.php');
-        auth_ctrl();
+    case 'formulaire':
+        require('views/formulaire.php');
+        formulaire_view();
+        break;
+
+    case 'submit_form':
+        require('controllers/form_ctrl.php');
+        form_submit_ctrl();
         break;
 
     default:
-        echo "404 - Page non trouvée";
+        require('views/404_view.php');
         break;
 }
 
-   // 🔽 AJOUT POUR L'AFFICHAGE DES TRAJETS
+
+// 🔽 AJOUT POUR L'AFFICHAGE DES TRAJETS
         case 'trajets':
             require('controllers/trajet_controle.php');
             break;
