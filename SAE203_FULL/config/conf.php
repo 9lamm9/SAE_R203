@@ -1,6 +1,6 @@
 <?php
 $host = '192.168.156.221';
-$db   = 'Pprojet3_tp3';
+$db   = 'projet3_tp3';
 $user = 'selbouti';
 $pass = '6442';
 $charset = 'utf8mb4';

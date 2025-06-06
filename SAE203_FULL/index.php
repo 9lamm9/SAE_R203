@@ -24,8 +24,13 @@ switch ($route) {
         require('controllers/form_ctrl.php');
         form_submit_ctrl();
         break;
+
     case 'trajets':
             require('controllers/trajet_controle.php');
+            break;
+
+    case 'reserver_trajet':
+          ctrl_reserver_trajet();
             break;
 
     default:
