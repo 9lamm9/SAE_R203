@@ -10,11 +10,16 @@ function getTrajetsDuJour($connexion) {
                 e.nom AS nom_conducteur,
                 e.prenom AS prenom_conducteur
             FROM trajet t
-            JOIN etudiant e ON t.id_conducteur = e.id
-            WHERE t.dateDepart = CURDATE()
+            LEFT JOIN etudiant e ON t.id_conducteur = e.id
             ORDER BY t.heureDepart";
 
-    $stmt = $connexion->prepare($sql);
-    $stmt->execute();
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
+    $result = $connexion->query($sql);
+        
+    if ($result === false) {
+        echo "Erreur SQL : ";
+        print_r($connexion->errorInfo());
+        return [];
+    }
+
+    return $result->fetchAll(PDO::FETCH_ASSOC);
+    }
