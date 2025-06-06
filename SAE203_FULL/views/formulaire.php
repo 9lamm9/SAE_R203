@@ -17,7 +17,7 @@
       Prêt(e) à rejoindre la communauté du covoiturage universitaire ? Remplis
       ce formulaire pour t’inscrire et commencer à partager tes trajets !
     </p>
-    <form action="index.php?route=traitement_formulaire" method="post">
+    <form action="index.php?route=submit_form" method="post">
       <label for="sujet">Rôle</label>
       <select name="sujet" id="sujet" required>
         <option value="" disabled selected hidden>Choisissez votre rôle</option>
