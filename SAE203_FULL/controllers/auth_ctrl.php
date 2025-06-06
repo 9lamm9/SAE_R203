@@ -1,6 +1,6 @@
 <?php
-require_once('models/crud.php');
-require_once('models/conf.php');
+require_once('/var/www/html/dev/SAE_R203-main/SAE203_FULL/models/ldap_model.php');
+require_once('/var/www/html/dev/SAE_R203-main/SAE203_FULL/config/conf.php');
 
 function login_ctrl() {
     $login = $_POST['login'] ?? '';
