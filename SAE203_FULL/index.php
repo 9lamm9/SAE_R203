@@ -33,8 +33,3 @@ switch ($route) {
         break;
 }
 
-
-// 🔽 AJOUT POUR L'AFFICHAGE DES TRAJETS
-        case 'trajets':
-            require('controllers/trajet_controle.php');
-            break;
