@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Trajets du jour</title>
-    <link rel="stylesheet" href="/dev/SAE_R203-main/SAE203_FULL/css/trajet.css">
+    <link rel="stylesheet" href="/dev/SAE_R203/SAE203_FULL/css/trajet.css">
 </head>
 <body>
     <h1>Trajets disponibles aujourd’hui</h1>
