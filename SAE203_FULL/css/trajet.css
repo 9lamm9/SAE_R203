@@ -83,3 +83,26 @@ table {
         font-size: 14px;
     }
 }
+
+/* Style du bouton Réserver */
+table form button {
+    background-color: #cc002c;       /* même rouge que header/footer */
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Effet au survol du bouton */
+table form button:hover {
+    background-color: #a01d06;       /* couleur plus foncée au hover */
+}
+
+/* Optionnel : léger effet d’ombre sur le bouton */
+table form button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(204, 0, 44, 0.5);
+}
