@@ -6,35 +6,47 @@ $route = $_GET['route'] ?? null;
 switch ($route) {
     case null:
     case 'login':
-        require('views/login_view.php');
+        require 'views/login_view.php';
         login_view();
         break;
 
-    case 'auth': // pour traitement du formulaire login
-        require('controllers/auth_ctrl.php');
+    case 'auth':
+        require 'controllers/auth_ctrl.php';
         login_ctrl();
         break;
 
     case 'formulaire':
-        require('views/formulaire.php');
+        require 'views/formulaire.php';
         formulaire_view();
         break;
 
     case 'submit_form':
-        require('controllers/form_ctrl.php');
+        require 'controllers/form_ctrl.php';
         form_submit_ctrl();
         break;
 
     case 'trajets':
-            require('controllers/trajet_controle.php');
-            break;
+        require 'controllers/trajet_controle.php';
+        ctrl_afficher_trajets(); // Assure-toi que cette fonction existe
+        break;
 
     case 'reserver_trajet':
-          ctrl_reserver_trajet();
-            break;
+        require 'controllers/reservation_controle.php';
+        $id_trajet = $_POST['trajet_id'] ?? null;
+        $id_passager = $_SESSION['user_id'] ?? null;
+
+        if ($id_trajet && $id_passager) {
+            reserver_trajet($connex, (int)$id_trajet, (int)$id_passager);
+        } else {
+            echo "Paramètres invalides pour la réservation.";
+        }
+        break;
+
+    case 'confirmation_succes':
+        require 'views/confirmation_reservation.php';
+        break;
 
     default:
-        require('views/404_view.php');
+        require 'views/404_view.php';
         break;
 }
-

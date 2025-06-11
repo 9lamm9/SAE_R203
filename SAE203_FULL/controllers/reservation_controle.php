@@ -1,0 +1,52 @@
+<?php
+
+function ctrl_reserver_trajet() {
+    session_start();
+
+    if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'passager') {
+        header('Location: index.php?route=login');
+        exit;
+    }
+
+    require_once __DIR__ . '/../config/conf.php';
+    $pdo = connection();
+
+    require_once __DIR__ . '/../crud/crud_trajet.php';
+    require_once __DIR__ . '/../crud/crud_reservation.php';
+
+    // GET: afficher la confirmation avant validation
+    if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['trajet_id'])) {
+        $trajet_id = (int) $_GET['trajet_id'];
+        $trajet = find_trajet_by_id($pdo, $trajet_id);
+
+        if (!$trajet) {
+            echo "❌ Trajet introuvable.";
+            exit;
+        }
+
+        require __DIR__ . '/../vues/confirmation_reservation.php';
+        exit;
+    }
+
+    // POST: valider la réservation
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['trajet_id'])) {
+        $trajet_id = (int) $_POST['trajet_id'];
+        $passager_id = $_SESSION['user']['id'];
+
+        // On peut vérifier ici si des places sont disponibles, si tu veux.
+
+        if (ajouter_reservation($pdo, $trajet_id, $passager_id)) {
+            // (Optionnel) décrémenter le nombre de places ici
+            header('Location: index.php?route=confirmation_succes');
+            exit;
+        } else {
+            echo "❌ Erreur lors de la réservation. Veuillez réessayer.";
+        }
+    } else {
+        echo "❌ Requête invalide.";
+    }
+}
+
+function ctrl_confirmation_succes() {
+    require __DIR__ . '/../vues/confirmation_succes.php';
+}
