@@ -25,18 +25,14 @@ switch ($route) {
         form_submit_ctrl();
         break;
 
-    case 'trajets':
-        require 'controllers/trajet_controle.php';
-        ctrl_afficher_trajets(); // Assure-toi que cette fonction existe
-        break;
-
+   
     case 'reserver_trajet':
         require 'controllers/reservation_controle.php';
         $id_trajet = $_POST['trajet_id'] ?? null;
         $id_passager = $_SESSION['user_id'] ?? null;
 
         if ($id_trajet && $id_passager) {
-            reserver_trajet($connex, (int)$id_trajet, (int)$id_passager);
+            ctrl_reserver_trajet();
         } else {
             echo "Paramètres invalides pour la réservation.";
         }

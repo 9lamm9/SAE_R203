@@ -1,4 +1,7 @@
 <?php
+require_once(__DIR__ . '/../models/trajet_controle.php');
+
+
 
 function ctrl_reserver_trajet() {
     session_start();
@@ -8,7 +11,8 @@ function ctrl_reserver_trajet() {
         exit;
     }
 
-    require_once __DIR__ . '/../config/conf.php';
+    require_once (__DIR__ . '/../config/conf.php');
+    
     $pdo = connection();
 
     require_once __DIR__ . '/../crud/crud_trajet.php';
