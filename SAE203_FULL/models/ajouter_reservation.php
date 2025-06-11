@@ -7,6 +7,7 @@ function ajouter_reservation(PDO $connex, int $id_trajet, int $id_passager): boo
     return $stmt->execute([$id_trajet, $id_passager]);
 }
 
+
 function find_trajet_by_id(PDO $pdo, int $id) {
     $stmt = $pdo->prepare("SELECT t.*, u.nom AS conducteur_nom, u.prenom AS conducteur_prenom 
                            FROM trajet t 
@@ -15,3 +16,4 @@ function find_trajet_by_id(PDO $pdo, int $id) {
     $stmt->execute([$id]);
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
+
